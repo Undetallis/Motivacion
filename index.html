@@ -30,6 +30,7 @@
         padding: 20px;
         box-sizing: border-box;
         gap: 10px;
+        cursor: pointer; /* indica que toda la pantalla se puede tocar/click */
     }
     #fondo {
         position: fixed;
@@ -70,28 +71,13 @@
         align-items: center;
         animation: rebote 0.8s ease-out;
         backdrop-filter: blur(6px);
+        pointer-events: none; /* NO bloquea el tap de la pantalla */
     }
     @media (max-width: 600px) {
         #fraseBox {
             font-size: 28px;
             padding: 25px 30px;
         }
-    }
-
-    /* BOTÓN LINKTREE */
-    #linktreeBtn {
-        margin-top: 10px;
-        display: block;
-        text-align: center;
-        font-size: 15px;
-        color: white;
-        opacity: 0.55;
-        text-decoration: none;
-        transition: 0.25s;
-        font-weight: 600;
-    }
-    #linktreeBtn:hover {
-        opacity: 0.9;
     }
 </style>
 
@@ -247,13 +233,21 @@
 
     window.onload = cargarFrase;
 </script>
+
+<script>
+    // Clic/tap en cualquier parte → Linktree
+    document.addEventListener("click", () => {
+        window.location.href = "https://linktr.ee/UnDetallis";
+    });
+    document.addEventListener("touchstart", () => {
+        window.location.href = "https://linktr.ee/UnDetallis";
+    });
+</script>
+
 </head>
 
 <body>
     <div id="fondo"></div>
-
     <div id="fraseBox">Cargando...</div>
-
-    <a href="https://linktr.ee/UnDetallis" target="_blank" id="linktreeBtn">Obten tu detallis</a>
 </body>
 </html>
